@@ -16,7 +16,7 @@ class CartPage extends StatelessWidget {
               itemCount: controller.cartItems.length,
               itemBuilder: (context, index) {
                 final imageUrl = controller.cartItems[index];
-                return CartItemWidget(imageUrl: imageUrl, index: index + 1);
+                return CartItemWidget(imageUrl: imageUrl, dogBreed: controller.extractBreedName(imageUrl),);
               },
             )),
       ),
@@ -24,11 +24,57 @@ class CartPage extends StatelessWidget {
   }
 }
 
+// class CartItemWidget extends StatelessWidget {
+//   final String imageUrl;
+//   final int index;
+
+//   const CartItemWidget({Key? key, required this.imageUrl, required this.index})
+//       : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListTile(
+//       title: Card(
+//         elevation: 5,
+//         child: Container(
+//           padding: EdgeInsets.all(8),
+//           child: Row(
+//             children: [
+//               Container(
+//                 width: 100,
+//                 height: 100,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(8),
+//                   image: DecorationImage(
+//                     image: NetworkImage(imageUrl),
+//                     fit: BoxFit.cover,
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(width: 8),
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     'Dog $index',
+//                     style: TextStyle(fontWeight: FontWeight.bold),
+//                   ),
+//                   Text('Price: \₹10,000'),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class CartItemWidget extends StatelessWidget {
   final String imageUrl;
-  final int index;
+  final String dogBreed; // Add a variable to hold the dog breed name
 
-  const CartItemWidget({Key? key, required this.imageUrl, required this.index})
+  const CartItemWidget({Key? key, required this.imageUrl, required this.dogBreed})
       : super(key: key);
 
   @override
@@ -56,7 +102,7 @@ class CartItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Dog $index',
+                    'Breed: $dogBreed', // Use the dog breed name here
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text('Price: \₹10,000'),

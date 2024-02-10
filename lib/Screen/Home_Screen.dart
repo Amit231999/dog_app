@@ -112,12 +112,6 @@ class HomePage extends StatelessWidget {
 }
 
 
-
-
-
-
-
-
 class ImageDetailScreen extends StatelessWidget {
   final String imageUrl;
 
